@@ -1,0 +1,31 @@
+.message-main
+  .main-header
+    .main-header__left-box
+      %h2.main-header__left-box__current-group= @group.name
+      %ul.main-header__left-box__member-list
+        %li.main-header__left-box__member-list-member
+        Menber:
+        - @group.users.each do |user|
+          %span= user.name 
+  = link_to 'Edit', edit_group_path(@group), class: 'main-header__edit-btn'
+  .messages
+    .message
+      .message__upper-info
+        %p.message__upper-info__talker
+          = message.user.name
+        %p.message__upper-info__date
+          = message.created_at.strftime("%Y/%m/%d %H:%M")
+      .message__text__box
+        - if message.content.present?
+          %p.message__text
+            = message.content
+            = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+  .form
+    = form_for [@group, @message] do |f|
+      .form__new-message
+        .form__new-message__input-box
+          = f.text_field :content, class: "new__message__text", placeholder: 'type a message'
+          = f.label :image, class: "new__message__image" do
+            = fa_icon 'picture-o', class: 'idon'
+            = f.file_field :image, type: "hidden"
+        =f.submit 'Send', class: "submit-btn"

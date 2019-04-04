@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+ul,li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.notice-box {
+  background-color: #38AEF0;
+
+  &__message {
+    color: #FFFFFF;
+    text-align: center;
+  }
+}
+
+

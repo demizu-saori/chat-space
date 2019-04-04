@@ -1,0 +1,51 @@
+.side {
+  color: $white;
+  font-weight: bold;
+  width: 300px;
+  float: left;
+
+  &__header {
+    background-color: $side_blue_dark;
+    height: 100px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+
+    &__box {
+      width: 100%;
+
+        &__user-name {
+          font-size: 16px;
+          font-weight: bold;
+          float:left;
+          color: $white;
+        }
+
+        .icon {
+          margin-left: 0.3rem;
+          color: $white;
+          font-size: 16px;
+          float: right;
+        }
+    }
+  }
+  .side__groups {
+    background-color: $side_blue_light;
+    padding: 20px 20px 0;
+    height: calc(100vh - 100px);
+    overflow: scroll;
+
+    .side__group {
+      margin-bottom: 40px;
+
+      &__name {
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+
+      &__message {
+        font-size: 11px;
+      }
+    }
+  }
+}
