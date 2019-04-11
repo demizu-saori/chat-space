@@ -3,19 +3,24 @@ require 'rails_helper'
 
 describe Message do
   describe '#create' do
-    context 'can save' do
-      it "is valid with content" do
-        expect(build(:message, image: nil)).to be_valid
+    let(:params) { {group_id: group.id, user_id: user.id, message: attribute_for(:message) } }
+    context 'log in' do
+      before do
+        login user
       end
+      context 'can save' do
+        it "is valid with content" do
+          expect(build(:message, image: nil)).to be_valid
+        end
 
-      it "is valid with content" do
-        expect(build(:message, content: nil)).to be_valid
-      end
+        it "is valid with content" do
+          expect(build(:message, content: nil)).to be_valid
+        end
 
-      it "is valid with content and image" do
-        expect(build(:message)).to be_valid
+        it "is valid with content and image" do
+          expect(build(:message)).to be_valid
+        end
       end
-    end
 
     context 'can not save' do
       it "is invalid without content and image " do
