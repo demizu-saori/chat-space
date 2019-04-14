@@ -1,2 +1,23 @@
-= render partial: 'groups/side'
-= render @messages
+.wrapper
+  = render 'groups/side'
+  .message-main
+    .main-header
+      .main-header__left-box
+        %h2.main-header__left-box__current-group= @group.name
+        %ul.main-header__left-box__member-list
+          %li.main-header__left-box__member-list-member
+          Menber:
+          - @group.users.each do |user|
+            %span= user.name
+    = link_to 'Edit', edit_group_path(@group), class: 'main-header__edit-btn'
+    .messages
+      = render @messages
+    .form
+      = form_for [@group, @message] do |f|
+        .form__new-message
+          .form__new-message__input-box
+            = f.text_field :content, class: "new__message__text", placeholder: 'type a message'
+            = f.label :image, class: "new__message__image" do
+              = fa_icon 'picture-o', class: 'idon'
+              = f.file_field :image, type: "hidden"
+          =f.submit 'Send', class: "submit-btn"
