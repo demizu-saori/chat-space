@@ -23,4 +23,4 @@ doc/
 .idea
 .secret
 
-/public/uploads/tmp/*
+/public/uploads/*
